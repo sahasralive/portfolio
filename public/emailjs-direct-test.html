@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmailJS Direct Test</title>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 50px auto; padding: 20px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input, textarea { width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; }
+        button { background: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        .status { margin-top: 15px; padding: 10px; border-radius: 4px; }
+        .success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .info { background: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+    </style>
+</head>
+<body>
+    <h1>EmailJS Direct Test</h1>
+    <p>This page tests EmailJS directly without React to isolate any issues.</p>
+    
+    <form id="testForm">
+        <div class="form-group">
+            <label for="from_name">Name:</label>
+            <input type="text" id="from_name" name="from_name" value="Test User" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="from_email">Email:</label>
+            <input type="email" id="from_email" name="from_email" value="test@example.com" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="4" required>This is a test message from the direct test page.</textarea>
+        </div>
+        
+        <button type="submit">Send Test Email</button>
+    </form>
+    
+    <div id="status"></div>
+    
+    <h2>Configuration</h2>
+    <ul>
+        <li><strong>Service ID:</strong> service_kvkkg3u</li>
+        <li><strong>Template ID:</strong> template_7vztrus</li>
+        <li><strong>Public Key:</strong> RCZKA-KIoftE32Ht4</li>
+    </ul>
+
+    <script>
+        // Initialize EmailJS
+        emailjs.init('RCZKA-KIoftE32Ht4');
+        
+        document.getElementById('testForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const statusDiv = document.getElementById('status');
+            statusDiv.innerHTML = '<div class="info">Sending email...</div>';
+            
+            try {
+                console.log('Starting EmailJS test...');
+                
+                // Get form data
+                const formData = new FormData(this);
+                
+                // Try different variable combinations
+                const templateParams1 = {
+                    from_name: formData.get('from_name'),
+                    from_email: formData.get('from_email'),
+                    message: formData.get('message'),
+                    to_name: 'Sahasra'
+                };
+                
+                const templateParams2 = {
+                    name: formData.get('from_name'),
+                    email: formData.get('from_email'),
+                    message: formData.get('message')
+                };
+                
+                const templateParams3 = {
+                    user_name: formData.get('from_name'),
+                    user_email: formData.get('from_email'),
+                    user_message: formData.get('message')
+                };
+                
+                console.log('Template params (from_name):', templateParams1);
+                console.log('Template params (name):', templateParams2);
+                console.log('Template params (user_name):', templateParams3);
+                
+                // Try the first combination
+                const templateParams = templateParams1;
+                
+                // Send email
+                const result = await emailjs.send(
+                    'service_kvkkg3u',
+                    'template_7vztrus', 
+                    templateParams,
+                    'RCZKA-KIoftE32Ht4'
+                );
+                
+                console.log('Success:', result);
+                statusDiv.innerHTML = `<div class="success">✅ Email sent successfully! Status: ${result.status}</div>`;
+                
+            } catch (error) {
+                console.error('Full error object:', error);
+                console.error('Error details:', {
+                    message: error.message,
+                    status: error.status,
+                    text: error.text,
+                    response: error.response,
+                    stack: error.stack
+                });
+                
+                let errorMessage = error.message || 'Unknown error';
+                if (error.status) errorMessage += ` (Status: ${error.status})`;
+                if (error.text) errorMessage += ` - ${error.text}`;
+                
+                statusDiv.innerHTML = `<div class="error">❌ Error: ${errorMessage}</div>`;
+            }
+        });
+        
+        // Test on page load
+        window.addEventListener('load', async function() {
+            console.log('Page loaded, EmailJS initialized');
+            console.log('Service ID:', 'service_kvkkg3u');
+            console.log('Template ID:', 'template_te8oy1x');
+            console.log('Public Key:', 'RCZKA-KIoftE32Ht4');
+            
+            // Test if EmailJS is properly initialized
+            try {
+                console.log('Testing EmailJS initialization...');
+                const testResult = await emailjs.send(
+                    'service_kvkkg3u',
+                    'template_7vztrus',
+                    {
+                        from_name: 'Test',
+                        from_email: 'test@test.com',
+                        message: 'Test',
+                        to_name: 'Test'
+                    },
+                    'RCZKA-KIoftE32Ht4'
+                );
+                console.log('Initialization test successful:', testResult);
+            } catch (initError) {
+                console.error('Initialization test failed:', initError);
+                console.error('This suggests a fundamental configuration issue');
+            }
+        });
+    </script>
+</body>
+</html>
