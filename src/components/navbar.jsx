@@ -5,12 +5,47 @@ import logoYellow from "../assets/logoyellow.png";
 function Navbar() {
   const [isHovered, setIsHovered] = useState(false);
 
+  const handleLogoClick = (e) => {
+    e.preventDefault();
+    
+    // Store original scroll behavior
+    const html = document.documentElement;
+    const body = document.body;
+    const originalHtmlScrollBehavior = html.style.scrollBehavior;
+    const originalBodyScrollBehavior = body.style.scrollBehavior;
+    
+    // Temporarily disable smooth scrolling
+    html.style.scrollBehavior = 'auto';
+    body.style.scrollBehavior = 'auto';
+    
+    // Force scroll to absolute top using multiple methods
+    window.scrollTo(0, 0);
+    html.scrollTop = 0;
+    html.scrollLeft = 0;
+    body.scrollTop = 0;
+    body.scrollLeft = 0;
+    
+    // Use requestAnimationFrame to ensure it happens after any pending smooth scrolls
+    requestAnimationFrame(() => {
+      window.scrollTo(0, 0);
+      html.scrollTop = 0;
+      body.scrollTop = 0;
+      
+      // Restore original scroll behavior after a short delay
+      setTimeout(() => {
+        html.style.scrollBehavior = originalHtmlScrollBehavior;
+        body.style.scrollBehavior = originalBodyScrollBehavior;
+      }, 100);
+    });
+  };
+
   return (
-    <nav className="navbar navbar-expand-lg bg-white navbar-light fixed-top shadow py-lg-0 px-4 px-lg-5">
+    <nav className="navbar navbar-expand-lg navbar-dark fixed-top modern-navbar py-lg-0 px-4 px-lg-5">
       {/* Mobile Logo */}
       <a 
         href="#home" 
-        className="navbar-brand d-block d-lg-none"
+        className="navbar-brand d-block d-lg-none modern-logo"
+        onClick={handleLogoClick}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
@@ -40,6 +75,7 @@ function Navbar() {
           <a 
             href="#home" 
             className="navbar-brand d-none d-lg-block"
+            onClick={handleLogoClick}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
@@ -70,6 +106,9 @@ function Navbar() {
         <div className="navbar-nav me-auto py-0">
           <a href="#projects" className="nav-item nav-link me-3">
             Projects
+          </a>
+          <a href="#designs" className="nav-item nav-link me-3">
+            Designs
           </a>
           <a href="#service" className="nav-item nav-link me-3">
             Services

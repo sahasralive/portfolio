@@ -9,7 +9,7 @@ import {
 
 function Services() {
   return (
-    <div className="container-xxl py-6" id="service">
+    <div className="container-xxl py-6 d-flex align-items-center justify-content-center min-vh-100" id="service" style={{ minHeight: '100vh' }}>
       <div className="container">
         <div className="text-center mb-5">
           <h3 className="text-uppercase mb-2" style={{ color: 'var(--brand-orange)' }}>Services</h3>

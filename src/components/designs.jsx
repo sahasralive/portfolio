@@ -1,7 +1,7 @@
 import React, { forwardRef, useEffect, useRef, useState } from "react";
-import { projectsData } from "../data/data.jsx";
+import { designsData } from "../data/data.jsx";
 
-const Projects = forwardRef((props, ref) => {
+const Designs = forwardRef((props, ref) => {
   const scrollContainerRef = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -15,7 +15,7 @@ const Projects = forwardRef((props, ref) => {
       if (isHovered) return;
 
       const tileWidth = 380 + 40; // tile width + gap
-      const nextIndex = (currentIndex + 1) % projectsData.length;
+      const nextIndex = (currentIndex + 1) % designsData.length;
       
       // Calculate target scroll position
       const targetScroll = nextIndex * tileWidth;
@@ -43,7 +43,7 @@ const Projects = forwardRef((props, ref) => {
     setIsHovered(false);
   };
 
-  // Handle dot click to jump to specific project
+  // Handle dot click to jump to specific design
   const handleDotClick = (index) => {
     const tileWidth = 380 + 40;
     const targetScroll = index * tileWidth;
@@ -100,14 +100,14 @@ const Projects = forwardRef((props, ref) => {
   }, []);
 
   return (
-    <div className="container-xxl py-6" id="projects" ref={ref}>
+    <div className="container-xxl py-6" id="designs" ref={ref}>
       <div className="container">
         <div className="text-center mb-3">
-          <h3 className="text-uppercase mb-2" style={{ color: 'var(--brand-orange)' }}>Projects</h3>
+          <h3 className="text-uppercase mb-2" style={{ color: 'var(--brand-purple)' }}>Designs</h3>
           
           <div className="d-flex justify-content-center align-items-center gap-3 mb-3">
             <div className="d-flex gap-2">
-              {projectsData.map((_, index) => {
+              {designsData.map((_, index) => {
                 const isActive = index === currentIndex;
                 return (
                   <div 
@@ -118,10 +118,10 @@ const Projects = forwardRef((props, ref) => {
                       width: isActive ? '12px' : '8px',
                       height: isActive ? '12px' : '8px',
                       borderRadius: '50%',
-                      backgroundColor: isActive ? 'var(--brand-orange)' : 'rgba(135, 89, 238, 0.3)',
+                      backgroundColor: isActive ? 'var(--brand-purple)' : 'rgba(135, 89, 238, 0.3)',
                       transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
                       cursor: 'pointer',
-                      border: isActive ? '2px solid var(--brand-orange)' : '2px solid transparent',
+                      border: isActive ? '2px solid var(--brand-purple)' : '2px solid transparent',
                       boxShadow: isActive 
                         ? '0 0 15px rgba(135, 89, 238, 0.4)' 
                         : '0 0 0px rgba(135, 89, 238, 0)',
@@ -144,12 +144,12 @@ const Projects = forwardRef((props, ref) => {
                         }}
                       />
                     )}
-        </div>
+                  </div>
                 );
               })}
             </div>
           </div>
-              </div>
+        </div>
         
         <div className="projects-container" style={{ padding: '1rem 0' }}>
           
@@ -181,7 +181,7 @@ const Projects = forwardRef((props, ref) => {
                   width: '8px',
                   height: '8px',
                   borderRadius: '50%',
-                  background: isScrolling ? 'var(--brand-orange)' : 'var(--brand-purple)',
+                  background: isScrolling ? 'var(--brand-purple)' : 'var(--brand-purple)',
                   transition: 'all 0.3s ease'
                 }}
               />
@@ -191,7 +191,7 @@ const Projects = forwardRef((props, ref) => {
           
           <div 
             className="projects-horizontal-scroll" 
-            id="projects-scroll"
+            id="designs-scroll"
             ref={scrollContainerRef}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
@@ -209,9 +209,9 @@ const Projects = forwardRef((props, ref) => {
             }}
           >
             <div className="projects-scroll-container">
-              {projectsData.map((project, index) => (
+              {designsData.map((design, index) => (
                 <div 
-                  key={`project-${project.id}`} 
+                  key={`design-${design.id}`} 
                   className={`project-tile ${index === currentIndex ? 'active' : ''}`}
                 >
                   <div className="project-item rounded overflow-hidden position-relative" style={{ 
@@ -227,8 +227,8 @@ const Projects = forwardRef((props, ref) => {
                   }}>
                     <img 
                       className="img-fluid" 
-                      src={`/${project.image}`} 
-                      alt={project.title}
+                      src={`/${design.image}`} 
+                      alt={design.title}
                       style={{ 
                         width: '100%', 
                         height: '100%', 
@@ -237,7 +237,7 @@ const Projects = forwardRef((props, ref) => {
                       }}
                     />
                     
-                    {/* Basic Project Info - Always Visible */}
+                    {/* Basic Design Info - Always Visible */}
                     <div 
                       className="position-absolute bottom-0 start-0 w-100 p-3"
                       style={{
@@ -246,17 +246,17 @@ const Projects = forwardRef((props, ref) => {
                       }}
                     >
                       <h5 className="text-white mb-1" style={{ fontSize: '1rem', fontWeight: '600' }}>
-                        {project.title}
+                        {design.title}
                       </h5>
                       <span 
                         className="badge" 
                         style={{ 
-                          backgroundColor: 'var(--brand-orange)', 
+                          backgroundColor: 'var(--brand-purple)', 
                           color: 'white',
                           fontSize: '0.7rem'
                         }}
                       >
-                        {project.category}
+                        {design.category}
                       </span>
                     </div>
 
@@ -270,7 +270,7 @@ const Projects = forwardRef((props, ref) => {
                         backdropFilter: 'blur(10px)'
                       }}
                     >
-                      {/* Top Section - Project Info */}
+                      {/* Top Section - Design Info */}
                       <div className="text-white">
                         <span 
                           className="badge mb-2" 
@@ -282,26 +282,26 @@ const Projects = forwardRef((props, ref) => {
                             border: '1px solid rgba(255,255,255,0.3)'
                           }}
                         >
-                          {project.category}
+                          {design.category}
                         </span>
                         <h5 className="text-white mb-2" style={{ fontSize: '1.2rem', fontWeight: '700' }}>
-                          {project.title}
+                          {design.title}
                         </h5>
                       </div>
 
                       {/* Middle Section - Full Description */}
                       <div className="text-white flex-grow-1 d-flex align-items-center">
                         <p className="text-white mb-0" style={{ fontSize: '0.9rem', lineHeight: '1.5', textAlign: 'left' }}>
-                          {project.description}
+                          {design.description}
                         </p>
-              </div>
+                      </div>
 
                       {/* Bottom Section - Technologies and Actions */}
                       <div className="text-white">
                         {/* Technology Tags */}
                         <div className="mb-3">
                           <div className="d-flex flex-wrap gap-1">
-                            {project.technologies.map((tech, techIndex) => (
+                            {design.technologies.map((tech, techIndex) => (
                               <span 
                                 key={techIndex}
                                 className="badge" 
@@ -319,13 +319,13 @@ const Projects = forwardRef((props, ref) => {
                                 {tech}
                               </span>
                             ))}
-            </div>
-            </div>
-          
+                          </div>
+                        </div>
+                      
                         {/* Action Buttons */}
                         <div className="d-flex gap-2 flex-wrap">
                           <a 
-                            href={project.demo} 
+                            href={design.demo} 
                             className="btn btn-sm project-btn" 
                             style={{ 
                               backgroundColor: 'rgba(255,255,255,0.2)', 
@@ -341,10 +341,31 @@ const Projects = forwardRef((props, ref) => {
                             rel="noopener noreferrer"
                           >
                             <i className="bi bi-eye me-1"></i>
-                            Live Demo
+                            View Design
                           </a>
+                          {design.github && design.github !== "#" && (
+                            <a 
+                              href={design.github} 
+                              className="btn btn-sm project-btn" 
+                              style={{ 
+                                backgroundColor: 'rgba(255,255,255,0.1)', 
+                                borderColor: 'rgba(255,255,255,0.3)', 
+                                color: 'white',
+                                fontSize: '0.8rem',
+                                padding: '0.5rem 1rem',
+                                borderRadius: '20px',
+                                backdropFilter: 'blur(10px)',
+                                fontWeight: '600'
+                              }}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <i className="bi bi-github me-1"></i>
+                              View Code
+                            </a>
+                          )}
                           <a 
-                            href={project.github} 
+                            href={design.link} 
                             className="btn btn-sm project-btn" 
                             style={{ 
                               backgroundColor: 'rgba(255,255,255,0.1)', 
@@ -359,8 +380,8 @@ const Projects = forwardRef((props, ref) => {
                             target="_blank"
                             rel="noopener noreferrer"
                           >
-                            <i className="bi bi-github me-1"></i>
-                            View Code
+                            <i className="bi bi-link-45deg me-1"></i>
+                            Portfolio
                           </a>
                         </div>
                       </div>
@@ -376,4 +397,4 @@ const Projects = forwardRef((props, ref) => {
   );
 });
 
-export default Projects;
+export default Designs;

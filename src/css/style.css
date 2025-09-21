@@ -111,16 +111,1695 @@
 #home {
     z-index: 1;
     margin-bottom: 6rem;
-    background: url(/img/bg-header.png) left top no-repeat;
-    background-size: cover;
     padding-top: 72px;
-    
+    position: relative;
+    overflow: hidden;
+}
+
+/* Splash Animation */
+.splash-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.splash-circle {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.1;
+    animation: splash-animation 8s ease-in-out infinite;
+}
+
+.splash-circle:nth-child(1) {
+    width: 200px;
+    height: 200px;
+    background: var(--brand-red);
+    top: 10%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.splash-circle:nth-child(2) {
+    width: 150px;
+    height: 150px;
+    background: var(--brand-orange);
+    top: 20%;
+    right: 15%;
+    animation-delay: 1s;
+}
+
+.splash-circle:nth-child(3) {
+    width: 180px;
+    height: 180px;
+    background: var(--brand-yellow);
+    bottom: 20%;
+    left: 20%;
+    animation-delay: 2s;
+}
+
+.splash-circle:nth-child(4) {
+    width: 120px;
+    height: 120px;
+    background: var(--brand-green);
+    bottom: 30%;
+    right: 25%;
+    animation-delay: 3s;
+}
+
+.splash-circle:nth-child(5) {
+    width: 100px;
+    height: 100px;
+    background: var(--brand-red);
+    top: 50%;
+    left: 5%;
+    animation-delay: 4s;
+}
+
+.splash-circle:nth-child(6) {
+    width: 160px;
+    height: 160px;
+    background: var(--brand-orange);
+    top: 60%;
+    right: 10%;
+    animation-delay: 5s;
+}
+
+@keyframes splash-animation {
+    0% {
+        transform: scale(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        transform: scale(1) rotate(180deg);
+        opacity: 0.1;
+    }
+    20% {
+        transform: scale(1.2) rotate(360deg);
+        opacity: 0.15;
+    }
+    30% {
+        transform: scale(0.8) rotate(540deg);
+        opacity: 0.1;
+    }
+    40% {
+        transform: scale(1.1) rotate(720deg);
+        opacity: 0.12;
+    }
+    50% {
+        transform: scale(0.9) rotate(900deg);
+        opacity: 0.08;
+    }
+    60% {
+        transform: scale(1.3) rotate(1080deg);
+        opacity: 0.1;
+    }
+    70% {
+        transform: scale(0.7) rotate(1260deg);
+        opacity: 0.06;
+    }
+    80% {
+        transform: scale(1.1) rotate(1440deg);
+        opacity: 0.08;
+    }
+    90% {
+        transform: scale(0.8) rotate(1620deg);
+        opacity: 0.05;
+    }
+    100% {
+        transform: scale(0) rotate(1800deg);
+        opacity: 0;
+    }
+}
+
+/* ===== ALTERNATIVE ANIMATION STYLES ===== */
+
+/* 1. FLOATING PARTICLES STYLE */
+.splash-particles .splash-circle {
+    animation: floating-particles 12s ease-in-out infinite;
+    border-radius: 50%;
+}
+
+@keyframes floating-particles {
+    0%, 100% {
+        transform: translateY(0px) translateX(0px) rotate(0deg);
+        opacity: 0.1;
+    }
+    25% {
+        transform: translateY(-30px) translateX(20px) rotate(90deg);
+        opacity: 0.2;
+    }
+    50% {
+        transform: translateY(-60px) translateX(-10px) rotate(180deg);
+        opacity: 0.15;
+    }
+    75% {
+        transform: translateY(-30px) translateX(15px) rotate(270deg);
+        opacity: 0.2;
+    }
+}
+
+/* 2. WAVE/RIPPLE STYLE */
+.splash-waves .splash-circle {
+    animation: wave-ripple 6s ease-out infinite;
+    border: 2px solid;
+    background: transparent;
+}
+
+.splash-waves .splash-circle:nth-child(1) { border-color: var(--brand-red); }
+.splash-waves .splash-circle:nth-child(2) { border-color: var(--brand-orange); }
+.splash-waves .splash-circle:nth-child(3) { border-color: var(--brand-yellow); }
+.splash-waves .splash-circle:nth-child(4) { border-color: var(--brand-green); }
+.splash-waves .splash-circle:nth-child(5) { border-color: var(--brand-red); }
+.splash-waves .splash-circle:nth-child(6) { border-color: var(--brand-orange); }
+
+@keyframes wave-ripple {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1);
+        opacity: 0.3;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+/* 3. GEOMETRIC SHAPES STYLE */
+.splash-geometric .splash-circle {
+    animation: geometric-shapes 10s linear infinite;
+    border-radius: 0;
+    transform-origin: center;
+}
+
+.splash-geometric .splash-circle:nth-child(1) { 
+    border-radius: 0; 
+    animation-delay: 0s;
+}
+.splash-geometric .splash-circle:nth-child(2) { 
+    border-radius: 20px; 
+    animation-delay: 1s;
+}
+.splash-geometric .splash-circle:nth-child(3) { 
+    border-radius: 0; 
+    animation-delay: 2s;
+}
+.splash-geometric .splash-circle:nth-child(4) { 
+    border-radius: 30px; 
+    animation-delay: 3s;
+}
+.splash-geometric .splash-circle:nth-child(5) { 
+    border-radius: 0; 
+    animation-delay: 4s;
+}
+.splash-geometric .splash-circle:nth-child(6) { 
+    border-radius: 25px; 
+    animation-delay: 5s;
+}
+
+@keyframes geometric-shapes {
+    0% {
+        transform: rotate(0deg) scale(0.5);
+        opacity: 0.1;
+    }
+    25% {
+        transform: rotate(90deg) scale(1);
+        opacity: 0.2;
+    }
+    50% {
+        transform: rotate(180deg) scale(0.8);
+        opacity: 0.15;
+    }
+    75% {
+        transform: rotate(270deg) scale(1.2);
+        opacity: 0.2;
+    }
+    100% {
+        transform: rotate(360deg) scale(0.5);
+        opacity: 0.1;
+    }
+}
+
+/* 4. GRADIENT FLOW STYLE */
+.splash-gradient .splash-circle {
+    animation: gradient-flow 8s ease-in-out infinite;
+    background: linear-gradient(45deg, var(--brand-red), var(--brand-orange), var(--brand-yellow), var(--brand-green));
+    background-size: 400% 400%;
+}
+
+@keyframes gradient-flow {
+    0% {
+        background-position: 0% 50%;
+        transform: scale(0.8) rotate(0deg);
+        opacity: 0.1;
+    }
+    25% {
+        background-position: 100% 50%;
+        transform: scale(1.1) rotate(90deg);
+        opacity: 0.2;
+    }
+    50% {
+        background-position: 50% 100%;
+        transform: scale(0.9) rotate(180deg);
+        opacity: 0.15;
+    }
+    75% {
+        background-position: 0% 0%;
+        transform: scale(1.2) rotate(270deg);
+        opacity: 0.2;
+    }
+    100% {
+        background-position: 0% 50%;
+        transform: scale(0.8) rotate(360deg);
+        opacity: 0.1;
+    }
+}
+
+/* 5. MORPHING BLOBS STYLE */
+.splash-blobs .splash-circle {
+    animation: morphing-blobs 15s ease-in-out infinite;
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+}
+
+@keyframes morphing-blobs {
+    0% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        transform: scale(0.8) rotate(0deg);
+        opacity: 0.1;
+    }
+    20% {
+        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+        transform: scale(1.1) rotate(72deg);
+        opacity: 0.2;
+    }
+    40% {
+        border-radius: 70% 30% 50% 50% / 30% 70% 60% 40%;
+        transform: scale(0.9) rotate(144deg);
+        opacity: 0.15;
+    }
+    60% {
+        border-radius: 40% 70% 60% 30% / 70% 40% 30% 60%;
+        transform: scale(1.2) rotate(216deg);
+        opacity: 0.2;
+    }
+    80% {
+        border-radius: 50% 50% 40% 60% / 40% 50% 70% 30%;
+        transform: scale(0.7) rotate(288deg);
+        opacity: 0.1;
+    }
+    100% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        transform: scale(0.8) rotate(360deg);
+        opacity: 0.1;
+    }
+}
+
+/* 6. PULSING ORBS STYLE */
+.splash-pulse .splash-circle {
+    animation: pulsing-orbs 4s ease-in-out infinite;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+@keyframes pulsing-orbs {
+    0%, 100% {
+        transform: scale(0.5);
+        opacity: 0.1;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    50% {
+        transform: scale(1.5);
+        opacity: 0.3;
+        box-shadow: 0 0 30px rgba(0,0,0,0.2);
+    }
+}
+
+/* 7. SPIRAL MOTION STYLE */
+.splash-spiral .splash-circle {
+    animation: spiral-motion 12s linear infinite;
+}
+
+@keyframes spiral-motion {
+    0% {
+        transform: rotate(0deg) translateX(0px) rotate(0deg);
+        opacity: 0.1;
+    }
+    25% {
+        transform: rotate(90deg) translateX(50px) rotate(-90deg);
+        opacity: 0.2;
+    }
+    50% {
+        transform: rotate(180deg) translateX(100px) rotate(-180deg);
+        opacity: 0.15;
+    }
+    75% {
+        transform: rotate(270deg) translateX(50px) rotate(-270deg);
+        opacity: 0.2;
+    }
+    100% {
+        transform: rotate(360deg) translateX(0px) rotate(-360deg);
+        opacity: 0.1;
+    }
+}
+
+/* ===== CUSTOM ANIMATIONS FOR YOUR PORTFOLIO ===== */
+
+/* 8. CREATIVE FLOW - Perfect for Creative Designer */
+.splash-creative .splash-circle {
+    animation: creative-flow 10s ease-in-out infinite;
+    border-radius: 50% 20% 80% 40%;
+}
+
+@keyframes creative-flow {
+    0% {
+        border-radius: 50% 20% 80% 40%;
+        transform: scale(0.8) rotate(0deg) translateY(0px);
+        opacity: 0.1;
+    }
+    25% {
+        border-radius: 20% 80% 40% 60%;
+        transform: scale(1.1) rotate(90deg) translateY(-20px);
+        opacity: 0.2;
+    }
+    50% {
+        border-radius: 80% 40% 60% 20%;
+        transform: scale(0.9) rotate(180deg) translateY(-40px);
+        opacity: 0.15;
+    }
+    75% {
+        border-radius: 40% 60% 20% 80%;
+        transform: scale(1.2) rotate(270deg) translateY(-20px);
+        opacity: 0.2;
+    }
+    100% {
+        border-radius: 50% 20% 80% 40%;
+        transform: scale(0.8) rotate(360deg) translateY(0px);
+        opacity: 0.1;
+    }
+}
+
+/* 9. PROFESSIONAL FLOAT - Perfect for Software Developer */
+.splash-professional .splash-circle {
+    animation: professional-float 8s ease-in-out infinite;
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+@keyframes professional-float {
+    0%, 100% {
+        transform: translateY(0px) scale(0.9);
+        opacity: 0.1;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    50% {
+        transform: translateY(-30px) scale(1.1);
+        opacity: 0.2;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+}
+
+/* 10. TRANSLATION WAVES - Perfect for Sworn Translator */
+.splash-translation .splash-circle {
+    animation: translation-waves 6s ease-in-out infinite;
+    border: 3px solid;
+    background: transparent;
+    border-radius: 50%;
+}
+
+.splash-translation .splash-circle:nth-child(1) { 
+    border-color: var(--brand-red); 
+    animation-delay: 0s;
+}
+.splash-translation .splash-circle:nth-child(2) { 
+    border-color: var(--brand-orange); 
+    animation-delay: 1s;
+}
+.splash-translation .splash-circle:nth-child(3) { 
+    border-color: var(--brand-yellow); 
+    animation-delay: 2s;
+}
+.splash-translation .splash-circle:nth-child(4) { 
+    border-color: var(--brand-green); 
+    animation-delay: 3s;
+}
+.splash-translation .splash-circle:nth-child(5) { 
+    border-color: var(--brand-red); 
+    animation-delay: 4s;
+}
+.splash-translation .splash-circle:nth-child(6) { 
+    border-color: var(--brand-orange); 
+    animation-delay: 5s;
+}
+
+@keyframes translation-waves {
+    0% {
+        transform: scale(0.5) rotate(0deg);
+        opacity: 0.1;
+    }
+    50% {
+        transform: scale(1.2) rotate(180deg);
+        opacity: 0.3;
+    }
+    100% {
+        transform: scale(2) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* ===== INK SPLASH ANIMATION ===== */
+
+/* Ink Splash Container */
+.splash-ink {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+/* Main Ink Splashes */
+.ink-splash {
+    position: absolute;
+    border-radius: 50% 30% 70% 40%;
+    opacity: 0.15;
+    animation: ink-splash-flow 12s ease-in-out infinite;
+    filter: blur(1px);
+}
+
+/* Ink Droplets */
+.ink-droplet {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.2;
+    animation: ink-droplet-fall 8s ease-in-out infinite;
+    filter: blur(0.5px);
+}
+
+/* Ink Flow Lines */
+.ink-flow {
+    position: absolute;
+    height: 3px;
+    border-radius: 50px;
+    opacity: 0.1;
+    animation: ink-flow-move 10s linear infinite;
+    filter: blur(0.5px);
+}
+
+/* Fast Moving Ink Droplets - Random Directions */
+.ink-splash:nth-child(1) {
+    background: var(--brand-red);
+    width: 8px;
+    height: 8px;
+    top: 5%;
+    left: 10%;
+    animation-delay: 0s;
+    animation: droplet-diagonal-right 3s ease-in-out infinite;
+}
+
+.ink-splash:nth-child(2) {
+    background: var(--brand-orange);
+    width: 6px;
+    height: 6px;
+    top: 8%;
+    left: 15%;
+    animation-delay: 0.3s;
+    animation: droplet-diagonal-left 2.5s ease-in-out infinite;
+}
+
+.ink-splash:nth-child(3) {
+    background: var(--brand-yellow);
+    width: 10px;
+    height: 10px;
+    top: 12%;
+    left: 20%;
+    animation-delay: 0.6s;
+    animation: droplet-vertical-fast 2s ease-in-out infinite;
+}
+
+.ink-splash:nth-child(4) {
+    background: var(--brand-green);
+    width: 7px;
+    height: 7px;
+    top: 15%;
+    left: 25%;
+    animation-delay: 0.9s;
+    animation: droplet-horizontal-right 3.5s ease-in-out infinite;
+}
+
+.ink-splash:nth-child(5) {
+    background: var(--brand-red);
+    width: 9px;
+    height: 9px;
+    top: 18%;
+    left: 30%;
+    animation-delay: 1.2s;
+    animation: droplet-spiral 4s ease-in-out infinite;
+}
+
+.ink-splash:nth-child(6) {
+    background: var(--brand-orange);
+    width: 5px;
+    height: 5px;
+    top: 22%;
+    left: 35%;
+    animation-delay: 1.5s;
+    animation: droplet-diagonal-right 2.8s ease-in-out infinite;
+}
+
+.ink-splash:nth-child(7) {
+    background: var(--brand-yellow);
+    width: 8px;
+    height: 8px;
+    top: 25%;
+    left: 40%;
+    animation-delay: 1.8s;
+    animation: droplet-horizontal-left 3.2s ease-in-out infinite;
+}
+
+.ink-splash:nth-child(8) {
+    background: var(--brand-green);
+    width: 6px;
+    height: 6px;
+    top: 28%;
+    left: 45%;
+    animation-delay: 2.1s;
+    animation: droplet-diagonal-left 2.3s ease-in-out infinite;
+}
+
+.ink-splash:nth-child(9) {
+    background: var(--brand-red);
+    width: 7px;
+    height: 7px;
+    top: 32%;
+    left: 50%;
+    animation-delay: 2.4s;
+    animation: droplet-vertical-fast 2.7s ease-in-out infinite;
+}
+
+.ink-splash:nth-child(10) {
+    background: var(--brand-orange);
+    width: 9px;
+    height: 9px;
+    top: 35%;
+    left: 55%;
+    animation-delay: 2.7s;
+    animation: droplet-spiral 3.8s ease-in-out infinite;
+}
+
+.ink-splash:nth-child(11) {
+    background: var(--brand-yellow);
+    width: 5px;
+    height: 5px;
+    top: 38%;
+    left: 60%;
+    animation-delay: 3s;
+    animation: droplet-diagonal-right 2.1s ease-in-out infinite;
+}
+
+.ink-splash:nth-child(12) {
+    background: var(--brand-green);
+    width: 8px;
+    height: 8px;
+    top: 42%;
+    left: 65%;
+    animation-delay: 3.3s;
+    animation: droplet-horizontal-right 3.3s ease-in-out infinite;
+}
+
+.ink-splash:nth-child(13) {
+    background: var(--brand-red);
+    width: 6px;
+    height: 6px;
+    top: 45%;
+    left: 70%;
+    animation-delay: 3.6s;
+    animation: droplet-diagonal-left 2.6s ease-in-out infinite;
+}
+
+.ink-splash:nth-child(14) {
+    background: var(--brand-orange);
+    width: 10px;
+    height: 10px;
+    top: 48%;
+    left: 75%;
+    animation-delay: 3.9s;
+    animation: droplet-vertical-fast 2.4s ease-in-out infinite;
+}
+
+.ink-splash:nth-child(15) {
+    background: var(--brand-yellow);
+    width: 7px;
+    height: 7px;
+    top: 52%;
+    left: 80%;
+    animation-delay: 4.2s;
+    animation: droplet-spiral 3.6s ease-in-out infinite;
+}
+
+.ink-splash:nth-child(16) {
+    background: var(--brand-green);
+    width: 9px;
+    height: 9px;
+    top: 55%;
+    left: 85%;
+    animation-delay: 4.5s;
+    animation: droplet-horizontal-left 2.9s ease-in-out infinite;
+}
+
+/* Full Screen Ink Droplets - Complete Coverage */
+.ink-droplet:nth-child(17) {
+    background: var(--brand-red);
+    width: 6px;
+    height: 6px;
+    top: 60%;
+    left: 5%;
+    animation-delay: 0.8s;
+    animation: droplet-diagonal-right 2.2s ease-in-out infinite;
+}
+
+.ink-droplet:nth-child(18) {
+    background: var(--brand-orange);
+    width: 8px;
+    height: 8px;
+    top: 65%;
+    left: 10%;
+    animation-delay: 1.1s;
+    animation: droplet-vertical-fast 1.8s ease-in-out infinite;
+}
+
+.ink-droplet:nth-child(19) {
+    background: var(--brand-yellow);
+    width: 5px;
+    height: 5px;
+    top: 70%;
+    left: 15%;
+    animation-delay: 1.4s;
+    animation: droplet-horizontal-left 2.6s ease-in-out infinite;
+}
+
+.ink-droplet:nth-child(20) {
+    background: var(--brand-green);
+    width: 7px;
+    height: 7px;
+    top: 75%;
+    left: 20%;
+    animation-delay: 1.7s;
+    animation: droplet-spiral 3.1s ease-in-out infinite;
+}
+
+.ink-droplet:nth-child(21) {
+    background: var(--brand-red);
+    width: 9px;
+    height: 9px;
+    top: 80%;
+    left: 25%;
+    animation-delay: 2s;
+    animation: droplet-diagonal-left 2.4s ease-in-out infinite;
+}
+
+.ink-droplet:nth-child(22) {
+    background: var(--brand-orange);
+    width: 6px;
+    height: 6px;
+    top: 85%;
+    left: 30%;
+    animation-delay: 2.3s;
+    animation: droplet-horizontal-right 2.8s ease-in-out infinite;
+}
+
+.ink-droplet:nth-child(23) {
+    background: var(--brand-yellow);
+    width: 8px;
+    height: 8px;
+    top: 90%;
+    left: 35%;
+    animation-delay: 2.6s;
+    animation: droplet-vertical-fast 2.1s ease-in-out infinite;
+}
+
+.ink-droplet:nth-child(24) {
+    background: var(--brand-green);
+    width: 5px;
+    height: 5px;
+    top: 95%;
+    left: 40%;
+    animation-delay: 2.9s;
+    animation: droplet-diagonal-right 2.7s ease-in-out infinite;
+}
+
+.ink-droplet:nth-child(25) {
+    background: var(--brand-red);
+    width: 7px;
+    height: 7px;
+    top: 58%;
+    left: 90%;
+    animation-delay: 3.2s;
+    animation: droplet-horizontal-left 2.3s ease-in-out infinite;
+}
+
+.ink-droplet:nth-child(26) {
+    background: var(--brand-orange);
+    width: 9px;
+    height: 9px;
+    top: 62%;
+    left: 85%;
+    animation-delay: 3.5s;
+    animation: droplet-spiral 2.9s ease-in-out infinite;
+}
+
+/* Additional Full Screen Droplets - Edge Coverage */
+.ink-droplet:nth-child(27) {
+    background: var(--brand-yellow);
+    width: 6px;
+    height: 6px;
+    top: 2%;
+    left: 2%;
+    animation-delay: 3.8s;
+    animation: droplet-diagonal-right 2.5s ease-in-out infinite;
+}
+
+.ink-droplet:nth-child(28) {
+    background: var(--brand-green);
+    width: 8px;
+    height: 8px;
+    top: 5%;
+    right: 2%;
+    animation-delay: 4.1s;
+    animation: droplet-diagonal-left 2.2s ease-in-out infinite;
+}
+
+.ink-droplet:nth-child(29) {
+    background: var(--brand-red);
+    width: 5px;
+    height: 5px;
+    bottom: 2%;
+    left: 2%;
+    animation-delay: 4.4s;
+    animation: droplet-vertical-fast 1.9s ease-in-out infinite;
+}
+
+.ink-droplet:nth-child(30) {
+    background: var(--brand-orange);
+    width: 7px;
+    height: 7px;
+    bottom: 5%;
+    right: 2%;
+    animation-delay: 4.7s;
+    animation: droplet-horizontal-left 2.6s ease-in-out infinite;
+}
+
+.ink-droplet:nth-child(31) {
+    background: var(--brand-yellow);
+    width: 6px;
+    height: 6px;
+    top: 25%;
+    left: 1%;
+    animation-delay: 5s;
+    animation: droplet-horizontal-right 2.4s ease-in-out infinite;
+}
+
+.ink-droplet:nth-child(32) {
+    background: var(--brand-green);
+    width: 8px;
+    height: 8px;
+    top: 45%;
+    right: 1%;
+    animation-delay: 5.3s;
+    animation: droplet-horizontal-left 2.8s ease-in-out infinite;
+}
+
+.ink-droplet:nth-child(33) {
+    background: var(--brand-red);
+    width: 5px;
+    height: 5px;
+    top: 65%;
+    left: 1%;
+    animation-delay: 5.6s;
+    animation: droplet-diagonal-right 2.1s ease-in-out infinite;
+}
+
+.ink-droplet:nth-child(34) {
+    background: var(--brand-orange);
+    width: 7px;
+    height: 7px;
+    top: 85%;
+    right: 1%;
+    animation-delay: 5.9s;
+    animation: droplet-diagonal-left 2.7s ease-in-out infinite;
+}
+
+.ink-droplet:nth-child(35) {
+    background: var(--brand-yellow);
+    width: 6px;
+    height: 6px;
+    top: 10%;
+    left: 50%;
+    animation-delay: 6.2s;
+    animation: droplet-vertical-fast 2.3s ease-in-out infinite;
+}
+
+.ink-droplet:nth-child(36) {
+    background: var(--brand-green);
+    width: 8px;
+    height: 8px;
+    top: 30%;
+    left: 50%;
+    animation-delay: 6.5s;
+    animation: droplet-spiral 2.5s ease-in-out infinite;
+}
+
+/* Dynamic Random Wave Ripples - Changing Positions & Colors */
+.ink-flow:nth-child(37) {
+    background: radial-gradient(circle, var(--brand-red), transparent);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    top: 15%;
+    left: 25%;
+    animation-delay: 0s;
+    animation: random-ripple-1 6s ease-out infinite;
+}
+
+.ink-flow:nth-child(38) {
+    background: radial-gradient(circle, var(--brand-orange), transparent);
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    top: 35%;
+    right: 20%;
+    animation-delay: 1s;
+    animation: random-ripple-2 7s ease-out infinite;
+}
+
+.ink-flow:nth-child(39) {
+    background: radial-gradient(circle, var(--brand-yellow), transparent);
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    bottom: 30%;
+    left: 60%;
+    animation-delay: 2s;
+    animation: random-ripple-3 5s ease-out infinite;
+}
+
+.ink-flow:nth-child(40) {
+    background: radial-gradient(circle, var(--brand-green), transparent);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    top: 50%;
+    right: 10%;
+    animation-delay: 3s;
+    animation: random-ripple-4 8s ease-out infinite;
+}
+
+.ink-flow:nth-child(41) {
+    background: radial-gradient(circle, var(--brand-red), transparent);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    top: 70%;
+    left: 40%;
+    animation-delay: 4s;
+    animation: random-ripple-5 6.5s ease-out infinite;
+}
+
+.ink-flow:nth-child(42) {
+    background: radial-gradient(circle, var(--brand-orange), transparent);
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    bottom: 20%;
+    right: 50%;
+    animation-delay: 5s;
+    animation: random-ripple-6 7.5s ease-out infinite;
+}
+
+/* Additional Random Wave Ripples - Random Colors & Positions */
+.ink-flow:nth-child(43) {
+    background: radial-gradient(circle, var(--brand-red), transparent);
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    top: 8%;
+    left: 42%;
+    animation-delay: 4.8s;
+    animation: wave-ripple-fast 3.9s ease-out infinite;
+}
+
+.ink-flow:nth-child(44) {
+    background: radial-gradient(circle, var(--brand-orange), transparent);
+    width: 98px;
+    height: 98px;
+    border-radius: 50%;
+    top: 23%;
+    right: 19%;
+    animation-delay: 5.6s;
+    animation: wave-ripple-fast 4.7s ease-out infinite;
+}
+
+.ink-flow:nth-child(45) {
+    background: radial-gradient(circle, var(--brand-yellow), transparent);
+    width: 67px;
+    height: 67px;
+    border-radius: 50%;
+    bottom: 28%;
+    left: 56%;
+    animation-delay: 6.4s;
+    animation: wave-ripple-fast 4.1s ease-out infinite;
+}
+
+.ink-flow:nth-child(46) {
+    background: radial-gradient(circle, var(--brand-green), transparent);
+    width: 82px;
+    height: 82px;
+    border-radius: 50%;
+    bottom: 8%;
+    right: 23%;
+    animation-delay: 7.2s;
+    animation: wave-ripple-fast 3.8s ease-out infinite;
+}
+
+.ink-flow:nth-child(47) {
+    background: radial-gradient(circle, var(--brand-red), transparent);
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    top: 52%;
+    left: 8%;
+    animation-delay: 8s;
+    animation: wave-ripple-fast 5.3s ease-out infinite;
+}
+
+.ink-flow:nth-child(48) {
+    background: radial-gradient(circle, var(--brand-orange), transparent);
+    width: 91px;
+    height: 91px;
+    border-radius: 50%;
+    top: 16%;
+    right: 8%;
+    animation-delay: 8.8s;
+    animation: wave-ripple-fast 4.6s ease-out infinite;
+}
+
+.ink-flow:nth-child(49) {
+    background: radial-gradient(circle, var(--brand-yellow), transparent);
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    top: 61%;
+    left: 29%;
+    animation-delay: 9.6s;
+    animation: wave-ripple-fast 4.9s ease-out infinite;
+}
+
+.ink-flow:nth-child(50) {
+    background: radial-gradient(circle, var(--brand-green), transparent);
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    top: 44%;
+    right: 41%;
+    animation-delay: 10.4s;
+    animation: wave-ripple-fast 5.5s ease-out infinite;
+}
+
+.ink-flow:nth-child(51) {
+    background: radial-gradient(circle, var(--brand-red), transparent);
+    width: 63px;
+    height: 63px;
+    border-radius: 50%;
+    top: 83%;
+    left: 14%;
+    animation-delay: 11.2s;
+    animation: wave-ripple-fast 3.4s ease-out infinite;
+}
+
+.ink-flow:nth-child(52) {
+    background: radial-gradient(circle, var(--brand-orange), transparent);
+    width: 89px;
+    height: 89px;
+    border-radius: 50%;
+    top: 29%;
+    right: 52%;
+    animation-delay: 12s;
+    animation: wave-ripple-fast 4.3s ease-out infinite;
+}
+
+/* Keyframe Animations */
+@keyframes ink-splash-flow {
+    0% {
+        transform: translateX(-100px) translateY(0px) rotate(0deg) scale(0.5);
+        opacity: 0;
+        border-radius: 50% 30% 70% 40%;
+    }
+    10% {
+        transform: translateX(0px) translateY(-20px) rotate(45deg) scale(0.8);
+        opacity: 0.15;
+        border-radius: 40% 60% 30% 70%;
+    }
+    25% {
+        transform: translateX(50px) translateY(-40px) rotate(90deg) scale(1);
+        opacity: 0.2;
+        border-radius: 60% 40% 50% 30%;
+    }
+    50% {
+        transform: translateX(100px) translateY(-20px) rotate(180deg) scale(1.2);
+        opacity: 0.15;
+        border-radius: 30% 70% 40% 60%;
+    }
+    75% {
+        transform: translateX(150px) translateY(0px) rotate(270deg) scale(0.9);
+        opacity: 0.1;
+        border-radius: 70% 30% 60% 40%;
+    }
+    100% {
+        transform: translateX(200px) translateY(20px) rotate(360deg) scale(0.5);
+        opacity: 0;
+        border-radius: 50% 30% 70% 40%;
+    }
+}
+
+@keyframes ink-droplet-fall {
+    0% {
+        transform: translateY(-50px) translateX(0px) scale(0);
+        opacity: 0;
+    }
+    20% {
+        transform: translateY(0px) translateX(10px) scale(1);
+        opacity: 0.2;
+    }
+    40% {
+        transform: translateY(50px) translateX(-5px) scale(1.2);
+        opacity: 0.3;
+    }
+    60% {
+        transform: translateY(100px) translateX(15px) scale(0.8);
+        opacity: 0.2;
+    }
+    80% {
+        transform: translateY(150px) translateX(-10px) scale(0.6);
+        opacity: 0.1;
+    }
+    100% {
+        transform: translateY(200px) translateX(5px) scale(0);
+        opacity: 0;
+    }
+}
+
+@keyframes ink-flow-move {
+    0% {
+        transform: translateX(-100px) scaleX(0);
+        opacity: 0;
+    }
+    20% {
+        transform: translateX(0px) scaleX(1);
+        opacity: 0.1;
+    }
+    50% {
+        transform: translateX(50px) scaleX(1.2);
+        opacity: 0.15;
+    }
+    80% {
+        transform: translateX(100px) scaleX(0.8);
+        opacity: 0.1;
+    }
+    100% {
+        transform: translateX(150px) scaleX(0);
+        opacity: 0;
+    }
+}
+
+/* ===== NEW KEYFRAME ANIMATIONS FOR FULL SCREEN COVERAGE ===== */
+
+/* Top Left Corner Splash */
+@keyframes ink-splash-top-left {
+    0% {
+        transform: translateX(-200px) translateY(-100px) rotate(0deg) scale(0.3);
+        opacity: 0;
+        border-radius: 50% 30% 70% 40%;
+    }
+    15% {
+        transform: translateX(0px) translateY(0px) rotate(45deg) scale(0.8);
+        opacity: 0.2;
+        border-radius: 40% 60% 30% 70%;
+    }
+    30% {
+        transform: translateX(100px) translateY(50px) rotate(90deg) scale(1.2);
+        opacity: 0.25;
+        border-radius: 60% 40% 50% 30%;
+    }
+    50% {
+        transform: translateX(200px) translateY(100px) rotate(180deg) scale(1.5);
+        opacity: 0.2;
+        border-radius: 30% 70% 40% 60%;
+    }
+    70% {
+        transform: translateX(300px) translateY(150px) rotate(270deg) scale(1.1);
+        opacity: 0.15;
+        border-radius: 70% 30% 60% 40%;
+    }
+    100% {
+        transform: translateX(400px) translateY(200px) rotate(360deg) scale(0.5);
+        opacity: 0;
+        border-radius: 50% 30% 70% 40%;
+    }
+}
+
+/* Profile Behind Splash */
+@keyframes ink-splash-profile-behind {
+    0% {
+        transform: translateX(-150px) translateY(-50px) rotate(0deg) scale(0.4);
+        opacity: 0;
+        border-radius: 50% 30% 70% 40%;
+    }
+    20% {
+        transform: translateX(0px) translateY(0px) rotate(60deg) scale(0.9);
+        opacity: 0.18;
+        border-radius: 40% 60% 30% 70%;
+    }
+    40% {
+        transform: translateX(80px) translateY(30px) rotate(120deg) scale(1.3);
+        opacity: 0.22;
+        border-radius: 60% 40% 50% 30%;
+    }
+    60% {
+        transform: translateX(150px) translateY(60px) rotate(180deg) scale(1.1);
+        opacity: 0.16;
+        border-radius: 30% 70% 40% 60%;
+    }
+    80% {
+        transform: translateX(220px) translateY(90px) rotate(240deg) scale(0.8);
+        opacity: 0.12;
+        border-radius: 70% 30% 60% 40%;
+    }
+    100% {
+        transform: translateX(300px) translateY(120px) rotate(360deg) scale(0.3);
+        opacity: 0;
+        border-radius: 50% 30% 70% 40%;
+    }
+}
+
+/* Bottom Left Splash */
+@keyframes ink-splash-bottom-left {
+    0% {
+        transform: translateX(-180px) translateY(100px) rotate(0deg) scale(0.3);
+        opacity: 0;
+        border-radius: 50% 30% 70% 40%;
+    }
+    25% {
+        transform: translateX(0px) translateY(0px) rotate(45deg) scale(0.9);
+        opacity: 0.2;
+        border-radius: 40% 60% 30% 70%;
+    }
+    50% {
+        transform: translateX(120px) translateY(-50px) rotate(90deg) scale(1.4);
+        opacity: 0.25;
+        border-radius: 60% 40% 50% 30%;
+    }
+    75% {
+        transform: translateX(200px) translateY(-100px) rotate(180deg) scale(1.0);
+        opacity: 0.15;
+        border-radius: 30% 70% 40% 60%;
+    }
+    100% {
+        transform: translateX(280px) translateY(-150px) rotate(270deg) scale(0.4);
+        opacity: 0;
+        border-radius: 50% 30% 70% 40%;
+    }
+}
+
+/* Right Side Splash */
+@keyframes ink-splash-right-side {
+    0% {
+        transform: translateX(200px) translateY(-80px) rotate(0deg) scale(0.4);
+        opacity: 0;
+        border-radius: 50% 30% 70% 40%;
+    }
+    20% {
+        transform: translateX(0px) translateY(0px) rotate(45deg) scale(0.8);
+        opacity: 0.18;
+        border-radius: 40% 60% 30% 70%;
+    }
+    40% {
+        transform: translateX(-100px) translateY(40px) rotate(90deg) scale(1.2);
+        opacity: 0.22;
+        border-radius: 60% 40% 50% 30%;
+    }
+    60% {
+        transform: translateX(-180px) translateY(80px) rotate(180deg) scale(1.0);
+        opacity: 0.16;
+        border-radius: 30% 70% 40% 60%;
+    }
+    80% {
+        transform: translateX(-250px) translateY(120px) rotate(270deg) scale(0.7);
+        opacity: 0.12;
+        border-radius: 70% 30% 60% 40%;
+    }
+    100% {
+        transform: translateX(-320px) translateY(160px) rotate(360deg) scale(0.3);
+        opacity: 0;
+        border-radius: 50% 30% 70% 40%;
+    }
+}
+
+/* Center Splash */
+@keyframes ink-splash-center {
+    0% {
+        transform: translateX(-100px) translateY(-50px) rotate(0deg) scale(0.2);
+        opacity: 0;
+        border-radius: 50% 30% 70% 40%;
+    }
+    30% {
+        transform: translateX(0px) translateY(0px) rotate(90deg) scale(1.0);
+        opacity: 0.2;
+        border-radius: 40% 60% 30% 70%;
+    }
+    60% {
+        transform: translateX(100px) translateY(50px) rotate(180deg) scale(1.5);
+        opacity: 0.25;
+        border-radius: 60% 40% 50% 30%;
+    }
+    100% {
+        transform: translateX(200px) translateY(100px) rotate(360deg) scale(0.3);
+        opacity: 0;
+        border-radius: 50% 30% 70% 40%;
+    }
+}
+
+/* Bottom Right Splash */
+@keyframes ink-splash-bottom-right {
+    0% {
+        transform: translateX(150px) translateY(100px) rotate(0deg) scale(0.3);
+        opacity: 0;
+        border-radius: 50% 30% 70% 40%;
+    }
+    25% {
+        transform: translateX(0px) translateY(0px) rotate(45deg) scale(0.8);
+        opacity: 0.18;
+        border-radius: 40% 60% 30% 70%;
+    }
+    50% {
+        transform: translateX(-80px) translateY(-40px) rotate(90deg) scale(1.3);
+        opacity: 0.22;
+        border-radius: 60% 40% 50% 30%;
+    }
+    75% {
+        transform: translateX(-150px) translateY(-80px) rotate(180deg) scale(1.0);
+        opacity: 0.15;
+        border-radius: 30% 70% 40% 60%;
+    }
+    100% {
+        transform: translateX(-220px) translateY(-120px) rotate(270deg) scale(0.4);
+        opacity: 0;
+        border-radius: 50% 30% 70% 40%;
+    }
+}
+
+/* ===== FAST MOVING DROPLET ANIMATIONS - RANDOM DIRECTIONS ===== */
+
+/* Diagonal Right Movement */
+@keyframes droplet-diagonal-right {
+    0% {
+        transform: translateY(-150px) translateX(-50px) scale(0) rotate(0deg);
+        opacity: 0;
+    }
+    20% {
+        transform: translateY(-100px) translateX(0px) scale(0.8) rotate(45deg);
+        opacity: 0.4;
+    }
+    40% {
+        transform: translateY(-50px) translateX(50px) scale(1.2) rotate(90deg);
+        opacity: 0.6;
+    }
+    60% {
+        transform: translateY(0px) translateX(100px) scale(1) rotate(135deg);
+        opacity: 0.4;
+    }
+    80% {
+        transform: translateY(50px) translateX(150px) scale(0.6) rotate(180deg);
+        opacity: 0.2;
+    }
+    100% {
+        transform: translateY(100px) translateX(200px) scale(0) rotate(225deg);
+        opacity: 0;
+    }
+}
+
+/* Diagonal Left Movement */
+@keyframes droplet-diagonal-left {
+    0% {
+        transform: translateY(-150px) translateX(50px) scale(0) rotate(0deg);
+        opacity: 0;
+    }
+    20% {
+        transform: translateY(-100px) translateX(0px) scale(0.8) rotate(-45deg);
+        opacity: 0.4;
+    }
+    40% {
+        transform: translateY(-50px) translateX(-50px) scale(1.2) rotate(-90deg);
+        opacity: 0.6;
+    }
+    60% {
+        transform: translateY(0px) translateX(-100px) scale(1) rotate(-135deg);
+        opacity: 0.4;
+    }
+    80% {
+        transform: translateY(50px) translateX(-150px) scale(0.6) rotate(-180deg);
+        opacity: 0.2;
+    }
+    100% {
+        transform: translateY(100px) translateX(-200px) scale(0) rotate(-225deg);
+        opacity: 0;
+    }
+}
+
+/* Vertical Fast Movement */
+@keyframes droplet-vertical-fast {
+    0% {
+        transform: translateY(-200px) translateX(0px) scale(0) rotate(0deg);
+        opacity: 0;
+    }
+    15% {
+        transform: translateY(-150px) translateX(10px) scale(0.6) rotate(30deg);
+        opacity: 0.5;
+    }
+    30% {
+        transform: translateY(-100px) translateX(-5px) scale(1) rotate(60deg);
+        opacity: 0.7;
+    }
+    45% {
+        transform: translateY(-50px) translateX(8px) scale(1.3) rotate(90deg);
+        opacity: 0.5;
+    }
+    60% {
+        transform: translateY(0px) translateX(-3px) scale(1.1) rotate(120deg);
+        opacity: 0.3;
+    }
+    75% {
+        transform: translateY(50px) translateX(5px) scale(0.8) rotate(150deg);
+        opacity: 0.2;
+    }
+    90% {
+        transform: translateY(100px) translateX(-2px) scale(0.4) rotate(180deg);
+        opacity: 0.1;
+    }
+    100% {
+        transform: translateY(150px) translateX(0px) scale(0) rotate(210deg);
+        opacity: 0;
+    }
+}
+
+/* Horizontal Right Movement */
+@keyframes droplet-horizontal-right {
+    0% {
+        transform: translateY(0px) translateX(-200px) scale(0) rotate(0deg);
+        opacity: 0;
+    }
+    25% {
+        transform: translateY(-20px) translateX(-100px) scale(0.8) rotate(45deg);
+        opacity: 0.4;
+    }
+    50% {
+        transform: translateY(-40px) translateX(0px) scale(1.2) rotate(90deg);
+        opacity: 0.6;
+    }
+    75% {
+        transform: translateY(-20px) translateX(100px) scale(1) rotate(135deg);
+        opacity: 0.4;
+    }
+    100% {
+        transform: translateY(0px) translateX(200px) scale(0) rotate(180deg);
+        opacity: 0;
+    }
+}
+
+/* Horizontal Left Movement */
+@keyframes droplet-horizontal-left {
+    0% {
+        transform: translateY(0px) translateX(200px) scale(0) rotate(0deg);
+        opacity: 0;
+    }
+    25% {
+        transform: translateY(-20px) translateX(100px) scale(0.8) rotate(-45deg);
+        opacity: 0.4;
+    }
+    50% {
+        transform: translateY(-40px) translateX(0px) scale(1.2) rotate(-90deg);
+        opacity: 0.6;
+    }
+    75% {
+        transform: translateY(-20px) translateX(-100px) scale(1) rotate(-135deg);
+        opacity: 0.4;
+    }
+    100% {
+        transform: translateY(0px) translateX(-200px) scale(0) rotate(-180deg);
+        opacity: 0;
+    }
+}
+
+/* Spiral Movement */
+@keyframes droplet-spiral {
+    0% {
+        transform: translateY(-150px) translateX(0px) scale(0) rotate(0deg);
+        opacity: 0;
+    }
+    20% {
+        transform: translateY(-120px) translateX(30px) scale(0.6) rotate(72deg);
+        opacity: 0.4;
+    }
+    40% {
+        transform: translateY(-60px) translateX(60px) scale(1) rotate(144deg);
+        opacity: 0.6;
+    }
+    60% {
+        transform: translateY(0px) translateX(60px) scale(1.2) rotate(216deg);
+        opacity: 0.4;
+    }
+    80% {
+        transform: translateY(60px) translateX(30px) scale(0.8) rotate(288deg);
+        opacity: 0.2;
+    }
+    100% {
+        transform: translateY(120px) translateX(0px) scale(0) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Wave Ripple Animation - Slower Speed */
+@keyframes wave-ripple-fast {
+    0% {
+        transform: scale(0);
+        opacity: 0.6;
+    }
+    30% {
+        transform: scale(0.5);
+        opacity: 0.4;
+    }
+    60% {
+        transform: scale(1);
+        opacity: 0.3;
+    }
+    80% {
+        transform: scale(1.5);
+        opacity: 0.2;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+/* ===== DYNAMIC RANDOM RIPPLE ANIMATIONS ===== */
+
+/* Random Ripple 1 - Changes position and color */
+@keyframes random-ripple-1 {
+    0% {
+        transform: scale(0) translate(0px, 0px);
+        opacity: 0.6;
+        background: radial-gradient(circle, var(--brand-red), transparent);
+    }
+    25% {
+        transform: scale(0.5) translate(50px, -30px);
+        opacity: 0.4;
+        background: radial-gradient(circle, var(--brand-orange), transparent);
+    }
+    50% {
+        transform: scale(1) translate(100px, -60px);
+        opacity: 0.3;
+        background: radial-gradient(circle, var(--brand-yellow), transparent);
+    }
+    75% {
+        transform: scale(1.5) translate(150px, -90px);
+        opacity: 0.2;
+        background: radial-gradient(circle, var(--brand-green), transparent);
+    }
+    100% {
+        transform: scale(2) translate(200px, -120px);
+        opacity: 0;
+        background: radial-gradient(circle, var(--brand-red), transparent);
+    }
+}
+
+/* Random Ripple 2 - Different pattern */
+@keyframes random-ripple-2 {
+    0% {
+        transform: scale(0) translate(0px, 0px);
+        opacity: 0.6;
+        background: radial-gradient(circle, var(--brand-orange), transparent);
+    }
+    25% {
+        transform: scale(0.5) translate(-40px, 40px);
+        opacity: 0.4;
+        background: radial-gradient(circle, var(--brand-green), transparent);
+    }
+    50% {
+        transform: scale(1) translate(-80px, 80px);
+        opacity: 0.3;
+        background: radial-gradient(circle, var(--brand-red), transparent);
+    }
+    75% {
+        transform: scale(1.5) translate(-120px, 120px);
+        opacity: 0.2;
+        background: radial-gradient(circle, var(--brand-yellow), transparent);
+    }
+    100% {
+        transform: scale(2) translate(-160px, 160px);
+        opacity: 0;
+        background: radial-gradient(circle, var(--brand-orange), transparent);
+    }
+}
+
+/* Random Ripple 3 - Spiral movement */
+@keyframes random-ripple-3 {
+    0% {
+        transform: scale(0) translate(0px, 0px) rotate(0deg);
+        opacity: 0.6;
+        background: radial-gradient(circle, var(--brand-yellow), transparent);
+    }
+    25% {
+        transform: scale(0.5) translate(30px, 30px) rotate(90deg);
+        opacity: 0.4;
+        background: radial-gradient(circle, var(--brand-red), transparent);
+    }
+    50% {
+        transform: scale(1) translate(60px, 60px) rotate(180deg);
+        opacity: 0.3;
+        background: radial-gradient(circle, var(--brand-green), transparent);
+    }
+    75% {
+        transform: scale(1.5) translate(90px, 90px) rotate(270deg);
+        opacity: 0.2;
+        background: radial-gradient(circle, var(--brand-orange), transparent);
+    }
+    100% {
+        transform: scale(2) translate(120px, 120px) rotate(360deg);
+        opacity: 0;
+        background: radial-gradient(circle, var(--brand-yellow), transparent);
+    }
+}
+
+/* Random Ripple 4 - Diagonal movement */
+@keyframes random-ripple-4 {
+    0% {
+        transform: scale(0) translate(0px, 0px);
+        opacity: 0.6;
+        background: radial-gradient(circle, var(--brand-green), transparent);
+    }
+    25% {
+        transform: scale(0.5) translate(60px, -40px);
+        opacity: 0.4;
+        background: radial-gradient(circle, var(--brand-yellow), transparent);
+    }
+    50% {
+        transform: scale(1) translate(120px, -80px);
+        opacity: 0.3;
+        background: radial-gradient(circle, var(--brand-orange), transparent);
+    }
+    75% {
+        transform: scale(1.5) translate(180px, -120px);
+        opacity: 0.2;
+        background: radial-gradient(circle, var(--brand-red), transparent);
+    }
+    100% {
+        transform: scale(2) translate(240px, -160px);
+        opacity: 0;
+        background: radial-gradient(circle, var(--brand-green), transparent);
+    }
+}
+
+/* Random Ripple 5 - Zigzag movement */
+@keyframes random-ripple-5 {
+    0% {
+        transform: scale(0) translate(0px, 0px);
+        opacity: 0.6;
+        background: radial-gradient(circle, var(--brand-red), transparent);
+    }
+    25% {
+        transform: scale(0.5) translate(-30px, 20px);
+        opacity: 0.4;
+        background: radial-gradient(circle, var(--brand-green), transparent);
+    }
+    50% {
+        transform: scale(1) translate(30px, -20px);
+        opacity: 0.3;
+        background: radial-gradient(circle, var(--brand-orange), transparent);
+    }
+    75% {
+        transform: scale(1.5) translate(-30px, 20px);
+        opacity: 0.2;
+        background: radial-gradient(circle, var(--brand-yellow), transparent);
+    }
+    100% {
+        transform: scale(2) translate(30px, -20px);
+        opacity: 0;
+        background: radial-gradient(circle, var(--brand-red), transparent);
+    }
+}
+
+/* Random Ripple 6 - Circular movement */
+@keyframes random-ripple-6 {
+    0% {
+        transform: scale(0) translate(0px, 0px) rotate(0deg);
+        opacity: 0.6;
+        background: radial-gradient(circle, var(--brand-orange), transparent);
+    }
+    25% {
+        transform: scale(0.5) translate(40px, 0px) rotate(90deg);
+        opacity: 0.4;
+        background: radial-gradient(circle, var(--brand-red), transparent);
+    }
+    50% {
+        transform: scale(1) translate(0px, 40px) rotate(180deg);
+        opacity: 0.3;
+        background: radial-gradient(circle, var(--brand-yellow), transparent);
+    }
+    75% {
+        transform: scale(1.5) translate(-40px, 0px) rotate(270deg);
+        opacity: 0.2;
+        background: radial-gradient(circle, var(--brand-green), transparent);
+    }
+    100% {
+        transform: scale(2) translate(0px, -40px) rotate(360deg);
+        opacity: 0;
+        background: radial-gradient(circle, var(--brand-orange), transparent);
+    }
 }
 
 #home .container {
     height: 100%;
     display: flex;
     align-items: center;
+    position: relative;
+    z-index: 1;
 }
 
 .typed-cursor {
