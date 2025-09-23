@@ -107,9 +107,6 @@ function Navbar() {
           <a href="#projects" className="nav-item nav-link me-3">
             Projects
           </a>
-          <a href="#designs" className="nav-item nav-link me-3">
-            Designs
-          </a>
           <a href="#service" className="nav-item nav-link me-3">
             Services
           </a>

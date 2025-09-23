@@ -7,7 +7,6 @@ import Certifications from "./components/certifications";
 import Skills from "./components/skills";
 import Services from "./components/services";
 import Projects from "./components/projects";
-import Designs from "./components/designs";
 import Contact from "./components/contact";
 import Footer from "./components/footer";
 import BackToTop from "./components/backtotop";
@@ -121,7 +120,6 @@ function App() {
       <Certifications />
       <Skills />
       <Projects />
-      <Designs />
       <Services />
       <Contact />
       <Footer />
